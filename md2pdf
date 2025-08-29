@@ -1,0 +1,12 @@
+#!/bin/sh
+set -e
+
+command -v pandoc >/dev/null 2>&1 || { echo >&2 "ERROR: pandoc required, but not found."; exit 1; }
+[ -r "$1" ] || { echo >&2 "ERROR: require a readable markdown file as argument."; exit 1; }
+
+infile="$1"
+outfile="${infile%.*}.pdf"
+echo "Generating '$outfile' from '$infile' ..." >&2
+
+pandoc "$infile" -o "$outfile" -s -V papersize:a4
+
