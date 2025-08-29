@@ -12,7 +12,7 @@ if [ -n "$(git status --porcelain)" ]; then
 fi
 
 script_name="$1" ; shift
-bin_dir="${1:-%HOME/bin}"
+bin_dir="${1:-$HOME/bin}"
 
 script_bin_path="${bin_dir}/${script_name}"
 script_repo_path="${repo_dir}/${script_name}"
