@@ -6,7 +6,7 @@ if [ -z "$1" ]; then
   echo "usage: $0 script_name.sh [/home/user/bin]"
   exit 1
 fi
-if   -n "$(git status --porcelain)" ]; then
+if [ -n "$(git status --porcelain)" ]; then
   echo "error: non-clean git working directory"
   exit 1
 fi
