@@ -1,0 +1,13 @@
+#!/bin/bash
+
+set -e
+
+jsonfile=$1
+yamlfile=$(mktemp --suffix=.yaml)
+
+json2yaml $jsonfile >$yamlfile
+editor $yamlfile
+yaml2json $yamlfile >$jsonfile.new
+mv -f $jsonfile.new $jsonfile
+
+rm $yamlfile
